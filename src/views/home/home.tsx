@@ -9,7 +9,7 @@ export function Home() {
     const [startProgress, stopProgress] = useProgress();
 
     return (
-        <div class="hero relative top-[10vh] max-w-2xl m-auto rounded-lg bg-base-200">
+        <div class="hero relative top-[10vh] max-w-lg m-auto rounded-lg bg-base-200">
             <div class="text-center hero-content">
                 <div class="max-w-md">
                     <h1 class="text-5xl font-bold">Admin Panel</h1>
