@@ -1,5 +1,4 @@
 import { render } from 'solid-js/web';
-import './fonts.css';
 import './reset.css';
 import './index.css';
 
