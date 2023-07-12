@@ -4,7 +4,7 @@ const [progress, setProgress] = createSignal(0);
 let progressBar!: HTMLDivElement;
 let timeout: NodeJS.Timeout;
 
-export const useProgress = () => [startProgress, stopProgress] as const;
+export const useGlobalProcess = () => [startProgress, stopProgress] as const;
 
 export function GlobalProgress() {
     const bar = document.querySelectorAll('#ProgressBar');

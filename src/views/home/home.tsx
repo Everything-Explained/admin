@@ -1,12 +1,10 @@
-import { Route, Routes, useNavigate } from '@solidjs/router';
+import { useNavigate } from '@solidjs/router';
 import { JointButtons } from '../../components/ui/joint-buttons';
-import { ArticlePanel } from '../../components/article-panel';
-import { useProgress } from '../../components/ui/global-progress';
-import { createSignal, onCleanup } from 'solid-js';
+import { useGlobalProcess } from '../../components/ui/global-progress';
 
 export function Home() {
     const nav = useNavigate();
-    const [startProgress, stopProgress] = useProgress();
+    const [startProgress, stopProgress] = useGlobalProcess();
 
     return (
         <div class="hero relative top-[10vh] max-w-lg m-auto rounded-lg bg-base-200">
