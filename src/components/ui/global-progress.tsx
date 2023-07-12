@@ -37,7 +37,7 @@ export function GlobalProgress() {
     );
 }
 
-function startProgress(delay = 350) {
+function startProgress(delay = 400) {
     if (progress() >= 100) {
         setProgress(() => 100);
         return;
@@ -55,7 +55,7 @@ function startProgress(delay = 350) {
                 );
                 return count + v;
             });
-            startProgress(Math.floor(Math.random() * delay + 50));
+            startProgress(Math.floor(Math.random() * delay + 100));
         },
         progress() == 0 ? 0 : delay
     );
