@@ -23,7 +23,7 @@ export function GlobalProgress() {
                 'transition-duration': `${_opacityAnimDuration}ms`,
             }}
         >
-            <div class="relative w-full h-1 bg-black bg-opacity-50 rounded-2xl">
+            <div class="relative w-full h-0.5 bg-black bg-opacity-75 rounded-2xl">
                 <div
                     class="absolute top-0 left-0 h-full ease-in-out bg-primary rounded-2xl"
                     style={{
