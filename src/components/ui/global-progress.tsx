@@ -57,6 +57,9 @@ function startProgress(delay = 575) {
 function stopProgress() {
     clearTimeout(timeout);
     setProgress(() => 100);
+    // Should be long enough for bar to finish 100% animation
+    const hideProgressDelay = 250;
+
     setTimeout(() => {
         progressBar.style.opacity = '0';
         const setProgressZero = () => {
@@ -64,5 +67,5 @@ function stopProgress() {
             progressBar.removeEventListener('transitionend', setProgressZero);
         };
         progressBar.addEventListener('transitionend', setProgressZero);
-    }, 250);
+    }, hideProgressDelay);
 }
