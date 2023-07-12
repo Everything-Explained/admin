@@ -5,7 +5,7 @@ import './index.css';
 import { Home } from './views/home/home';
 import { Route, Router, Routes } from '@solidjs/router';
 import { ArticlePanel } from './components/article-panel';
-import { GlobalProgress } from './components/ui/global-progress';
+import { GlobalProgress, useGlobalProgress } from './components/ui/global-progress';
 
 const root = document.getElementById('root');
 

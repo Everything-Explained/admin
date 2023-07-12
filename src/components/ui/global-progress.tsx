@@ -4,7 +4,9 @@ const [progress, setProgress] = createSignal(0);
 let progressBar!: HTMLDivElement;
 let timeout: NodeJS.Timeout;
 
-export const useGlobalProcess = () => [startProgress, stopProgress] as const;
+export const useGlobalProgress = () => [startProgress, stopProgress] as const;
+const _widthAnimDuration = 375;
+const _opacityAnimDuration = 175;
 
 export function GlobalProgress() {
     const bar = document.querySelectorAll('#ProgressBar');
@@ -16,13 +18,18 @@ export function GlobalProgress() {
         <div
             id="ProgressBar"
             ref={progressBar}
-            class="fixed inset-x-0 top-0 duration-300 opacity-0 ease-in-out transition-{opacity}"
+            class="fixed inset-x-0 top-0 transition-opacity ease-in-out opacity-0"
+            style={{
+                'transition-duration': `${_opacityAnimDuration}ms`,
+            }}
         >
             <div class="relative w-full h-1 bg-black bg-opacity-50 rounded-2xl">
                 <div
-                    class="bg-primary top-0 left-0 h-full absolute rounded-2xl duration-200 ease-in-out transition-{width, opacity}"
+                    class="absolute top-0 left-0 h-full ease-in-out bg-primary rounded-2xl"
                     style={{
                         width: `${progress()}%`,
+                        'transition-property': 'width',
+                        'transition-duration': `${_widthAnimDuration}ms`,
                     }}
                 ></div>
             </div>
@@ -30,7 +37,7 @@ export function GlobalProgress() {
     );
 }
 
-function startProgress(delay = 575) {
+function startProgress(delay = 350) {
     if (progress() >= 100) {
         setProgress(() => 100);
         return;
@@ -48,7 +55,7 @@ function startProgress(delay = 575) {
                 );
                 return count + v;
             });
-            startProgress(Math.floor(Math.random() * delay + 100));
+            startProgress(Math.floor(Math.random() * delay + 50));
         },
         progress() == 0 ? 0 : delay
     );
@@ -57,8 +64,7 @@ function startProgress(delay = 575) {
 function stopProgress() {
     clearTimeout(timeout);
     setProgress(() => 100);
-    // Should be long enough for bar to finish 100% animation
-    const hideProgressDelay = 250;
+    const hideProgressDelay = Math.floor((_widthAnimDuration + _opacityAnimDuration) / 2);
 
     setTimeout(() => {
         progressBar.style.opacity = '0';
