@@ -5,7 +5,7 @@ let progressBar!: HTMLDivElement;
 let timeout: NodeJS.Timeout;
 
 export const useGlobalProgress = () => [startProgress, stopProgress] as const;
-const _widthAnimDuration = 375;
+const _widthAnimDuration = 300;
 const _opacityAnimDuration = 175;
 
 export function GlobalProgress() {
