@@ -9,7 +9,7 @@ export function ToolTip({ tip, children, type }: TTProps) {
 
     return (
         <div
-            class="tooltip tooltip-top font-bold"
+            class="font-bold tooltip tooltip-top"
             classList={{ [`tooltip-${tipType}`]: true }}
             data-tip={tip}
         >
