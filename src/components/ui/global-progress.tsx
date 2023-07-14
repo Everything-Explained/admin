@@ -1,4 +1,4 @@
-import { createSignal, onMount } from 'solid-js';
+import { createSignal } from 'solid-js';
 
 const [progress, setProgress] = createSignal(0);
 let progressBar!: HTMLDivElement;
@@ -7,6 +7,7 @@ let timeout: NodeJS.Timeout;
 export const useGlobalProgress = () => [startProgress, stopProgress] as const;
 const _widthAnimDuration = 300;
 const _opacityAnimDuration = 175;
+let _inProgress = false;
 
 export function GlobalProgress() {
     const bar = document.querySelectorAll('#ProgressBar');
@@ -59,10 +60,14 @@ function startProgress(delay = 400) {
         },
         progress() == 0 ? 0 : delay
     );
+
+    _inProgress = true;
 }
 
 function stopProgress() {
+    if (!_inProgress) return;
     clearTimeout(timeout);
+    _inProgress = false;
     setProgress(() => 100);
     const hideProgressDelay = Math.floor((_widthAnimDuration + _opacityAnimDuration) / 2);
 
