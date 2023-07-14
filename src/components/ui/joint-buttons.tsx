@@ -25,7 +25,7 @@ export function JointButtons({ color, names, size, toolTips, clickHandlers }: JB
 
     function DefaultButton(name: string, i: Accessor<number>) {
         return (
-            <Button type={color} size={size} joint={true} click={clickHandlers[i()]}>
+            <Button color={color} size={size} joint={true} click={clickHandlers[i()]}>
                 {name}
             </Button>
         );

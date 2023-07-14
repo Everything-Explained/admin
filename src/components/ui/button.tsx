@@ -1,7 +1,7 @@
 export type BtnSize = 'lg' | 'md' | 'sm';
 
 type BtnProps = {
-    type?: 'primary' | 'secondary' | 'accent' | 'info' | 'warning' | 'error';
+    color?: ThemeColors;
     size?: BtnSize;
     joint?: boolean;
     disabled?: boolean;
@@ -9,9 +9,9 @@ type BtnProps = {
     click: () => void;
 };
 
-export const Button = ({ click, disabled, type, size, joint, children }: BtnProps) => {
+export const Button = ({ click, disabled, color, size, joint, children }: BtnProps) => {
     const isDisabled = disabled ?? false;
-    const btnType = type ?? 'neutral';
+    const btnColor = color ?? 'neutral';
     const isJoint = joint ?? false;
     const btnSize = size ?? 'sm';
 
@@ -22,7 +22,7 @@ export const Button = ({ click, disabled, type, size, joint, children }: BtnProp
             onclick={click}
             class="btn btn-outline btn-neutral"
             classList={{
-                [`btn-${btnType}`]: true,
+                [`btn-${btnColor}`]: true,
                 [`btn-${btnSize}`]: true,
                 'join-item': isJoint,
             }}
