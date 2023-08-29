@@ -1,0 +1,68 @@
+:root {
+    --input-placeholder-c: hsl(198, 8%, 40%);
+    --input-invalid-c: hsl(30, 100%, 60%);
+}
+
+.textbox__label {
+    position: absolute;
+    top: 0;
+    left: 0.5rem;
+    padding-left: 5px;
+    font-weight: 400;
+    font-size: 1.15rem;
+    text-transform: none;
+    pointer-events: none;
+    transition: all 250ms;
+}
+
+.textbox {
+    width: 100%;
+    margin-top: 1.3rem;
+    padding: 7px 0 5px 3px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition:
+        border 0.25s,
+        color 0.3s;
+
+    &::placeholder {
+        color: transparent;
+        font-family: inherit;
+        text-transform: none;
+    }
+
+    &:placeholder-shown ~ .textbox__label {
+        top: 1.7rem;
+        left: 0;
+        font-size: 1.3rem;
+        color: hsl(240, 5%, 34%);
+    }
+
+    &:focus {
+        & ~ .textbox__label {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0.5rem;
+            font-size: 1.15rem;
+        }
+        & ~ .textbox__bar {
+            width: 100%;
+        }
+    }
+}
+
+.textbox__bar {
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 2px;
+    pointer-events: none;
+    transition:
+        width 300ms,
+        background-color 300ms;
+}
