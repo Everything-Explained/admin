@@ -1,0 +1,8 @@
+.login_container {
+    margin: 10vh auto 0 auto;
+    max-width: 20rem;
+    padding: 0.125rem 1.75rem 0.75rem 1.75rem;
+    border-radius: 0.5rem;
+    background-color: hsla(198, 13%, 15%, 0.5);
+    box-shadow: 1px 1px 20px 0px hsla(0, 0%, 0%, 0.55);
+}
