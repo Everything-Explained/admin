@@ -79,7 +79,7 @@ export function Input({
         <div class={`relative mb-8 ${customClasses}`}>
             <input
                 id={inputID}
-                class="textbox border-b-[1px] text-emerald-300"
+                class="textbox mt-5 w-full border-b-[1px] bg-transparent text-emerald-300"
                 classList={{
                     'border-b-zinc-500': chars() < minLen,
                     'border-b-emerald-300': chars() >= minLen,
@@ -94,7 +94,7 @@ export function Input({
 
             {/* Animated Label on Input Focus */}
             <label
-                class="textbox__label"
+                class="textbox__label absolute top-0 pl-1 font-normal text-slate-300"
                 classList={{ 'text-rose-400': !hasValidInputLength() || !isValidInput() }}
                 for={inputID}
             >
@@ -103,7 +103,7 @@ export function Input({
 
             {/* Animated Border on Input Focus */}
             <span
-                class="textbox__bar"
+                class="textbox__bar absolute bottom-[-1px] left-0 h-[2px] w-0"
                 classList={{
                     'bg-zinc-500': chars() < minLen || !isValidInput(),
                     'bg-emerald-300': chars() >= minLen && isValidInput(),
