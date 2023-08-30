@@ -1,0 +1,73 @@
+.btn {
+    padding: 0.3rem 1rem;
+    letter-spacing: 0.1em;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
+
+    &:active {
+        top: 2px;
+        left: 2px;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        background-color: hsl(0, 0%, 30%);
+        border-color: hsl(0, 0%, 50%);
+        color: hsl(0, 0%, 70%);
+        cursor: not-allowed;
+
+        &:active {
+            top: 0;
+            left: 0;
+        }
+    }
+
+    &.btn__neutral {
+        background-color: hsl(198, 13%, 70%);
+        border-top: 1px solid hsl(198, 13%, 85%);
+        border-left: 1px solid hsl(198, 13%, 85%);
+        box-shadow: 0 0 10px 0 hsla(198, 13%, 70%, 0.5);
+
+        &:hover {
+            background-color: hsl(198, 13%, 85%);
+            box-shadow: 0 0 10px 0 hsla(198, 13%, 85%, 0.8);
+        }
+    }
+
+    &.btn__info {
+        background-color: hsl(198, 100%, 50%);
+        border-top: 1px solid hsl(198, 100%, 85%);
+        border-left: 1px solid hsl(198, 100%, 85%);
+        box-shadow: 0 0 10px 0 hsla(198, 100%, 70%, 0.5);
+
+        &:hover {
+            background-color: hsl(198, 100%, 70%);
+            box-shadow: 0 0 10px 0 hsla(198, 100%, 70%, 0.8);
+        }
+    }
+
+    &.btn__good {
+        background-color: hsl(160, 100%, 47%);
+        border-top: 1px solid hsl(160, 100%, 85%);
+        border-left: 1px solid hsl(160, 100%, 85%);
+        box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.5);
+
+        &:hover {
+            background-color: hsl(160, 100%, 70%);
+            box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.8);
+        }
+    }
+
+    &.btn__attention {
+        background-color: hsl(47, 100%, 50%);
+        border-top: 1px solid hsl(47, 100%, 85%);
+        border-left: 1px solid hsl(47, 100%, 85%);
+        box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.5);
+
+        &:hover {
+            background-color: hsl(47, 100%, 70%);
+            box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.8);
+        }
+    }
+}
