@@ -3,8 +3,11 @@ import './index.css';
 
 import { Home } from './views/home/home';
 import { Route, Router, Routes } from '@solidjs/router';
-import { ArticlePanel } from './components/article-panel';
-import { GlobalProgress, useGlobalProgress } from './components/ui/global-progress';
+import { GlobalProgress } from './components/ui/global-progress';
+import { Literature } from './views/literature';
+import { Login } from './views/login';
+import { LoginRouteGuard } from './components/login-route-guard';
+import { PageNotFound } from './views/404';
 
 const root = document.getElementById('root');
 
@@ -14,7 +17,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
     };
     throw new Error(
         'Root element not found. Did you forget to add it to your index.html? ' +
-            'Or maybe the id attribute got misspelled?'
+            'Or maybe the id attribute got misspelled?',
     );
 }
 
@@ -24,11 +27,15 @@ render(
             <GlobalProgress />
             <Router>
                 <Routes>
-                    <Route path="/" component={Home} />
-                    <Route path="/literature" component={ArticlePanel} />
+                    <Route path="/login" component={Login} />
+                    <Route path="/" component={LoginRouteGuard}>
+                        <Route path="/" component={Home} />
+                        <Route path="/literature" component={Literature} />
+                    </Route>
+                    <Route path="*" component={PageNotFound} />
                 </Routes>
             </Router>
         </>
     ),
-    root!
+    root!,
 );
