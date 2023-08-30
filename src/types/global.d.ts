@@ -1,8 +1,1 @@
-type ThemeColors =
-    | 'primary'
-    | 'secondary'
-    | 'accent'
-    | 'info'
-    | 'warning'
-    | 'error'
-    | 'success';
+type ColorType = 'info' | 'attention' | 'dangerous' | 'good' | 'neutral';
