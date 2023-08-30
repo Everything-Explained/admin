@@ -1,38 +1,37 @@
-import { useNavigate } from '@solidjs/router';
-import { JointButtons } from '../../components/ui/joint-buttons';
-import { useGlobalProcess } from '../../components/ui/global-progress';
+import { useBeforeLeave, useNavigate } from '@solidjs/router';
+import { useGlobalProgress } from '../../components/ui/global-progress';
+import { Button } from '../../components/ui/button';
 
 export function Home() {
     const nav = useNavigate();
-    const [startProgress, stopProgress] = useGlobalProcess();
+    const [startProgress, stopProgress] = useGlobalProgress();
+
+    useBeforeLeave(() => {
+        startProgress();
+    });
 
     return (
-        <div class="hero relative top-[10vh] max-w-lg m-auto rounded-lg bg-base-200">
-            <div class="text-center hero-content">
-                <div class="max-w-md">
-                    <h1 class="text-5xl font-bold">Admin Panel</h1>
-                    <p class="py-6 text-xl">Please select a destination below!</p>
-                    <JointButtons
-                        color="primary"
-                        size="md"
-                        clickHandlers={[
-                            () => nav('/literature'),
-                            () => {
-                                startProgress();
-                            },
-                            () => {
-                                stopProgress();
-                            },
-                        ]}
-                        names={['Literature', 'Logs', 'Users']}
-                        toolTips={[
-                            null,
-                            { text: 'Not Implemented', color: 'warning' },
-                            { text: 'Not Implemented', color: 'warning' },
-                        ]}
-                    />
-                </div>
-            </div>
+        <div class="text-center">
+            <h1 class="text-5xl font-bold">Admin Panel</h1>
+            <p class="py-6 text-xl">Please select a destination below!</p>
+            <span class="mr-4">
+                <Button
+                    color="info"
+                    click={() => {
+                        console.log('hello world');
+                    }}
+                >
+                    Literature
+                </Button>
+            </span>
+            <Button
+                color="error"
+                click={() => {
+                    console.log('logs');
+                }}
+            >
+                Logs
+            </Button>
         </div>
     );
 }
