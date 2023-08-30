@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import './styles/reset.css';
 
 body {
     font-family: 'Nunito Sans', Verdana;
