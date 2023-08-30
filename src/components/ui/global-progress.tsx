@@ -19,17 +19,16 @@ export function GlobalProgress() {
         <div
             id="ProgressBar"
             ref={progressBar}
-            class="fixed inset-x-0 top-0 transition-opacity ease-in-out opacity-0"
+            class="fixed inset-x-0 top-0 opacity-0 transition-opacity"
             style={{
                 'transition-duration': `${_opacityAnimDuration}ms`,
             }}
         >
-            <div class="relative w-full h-0.5 bg-black bg-opacity-75 rounded-2xl">
+            <div class="relative h-[3px] w-full rounded-2xl bg-black opacity-75">
                 <div
-                    class="absolute top-0 left-0 h-full ease-in-out bg-primary rounded-2xl"
+                    class="transition-width absolute left-0 top-0 h-full bg-emerald-400"
                     style={{
                         width: `${progress()}%`,
-                        'transition-property': 'width',
                         'transition-duration': `${_widthAnimDuration}ms`,
                     }}
                 ></div>
@@ -52,13 +51,13 @@ function startProgress(delay = 400) {
         () => {
             setProgress((count) => {
                 const v = Math.floor(
-                    Math.random() * Math.floor(25 - (progress() / 100) * 23.5)
+                    Math.random() * Math.floor(25 - (progress() / 100) * 23.5),
                 );
                 return count + v;
             });
             startProgress(Math.floor(Math.random() * delay + 100));
         },
-        progress() == 0 ? 0 : delay
+        progress() == 0 ? 0 : delay,
     );
 
     _inProgress = true;
