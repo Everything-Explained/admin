@@ -81,7 +81,7 @@ export function Input({
                 id={inputID}
                 class="textbox mt-5 w-full border-b-[1px] bg-transparent text-emerald-300"
                 classList={{
-                    'border-b-zinc-500': chars() < minLen,
+                    'border-b-zinc-500': chars() < minLen || !isValidInput(),
                     'border-b-emerald-300': chars() >= minLen,
                 }}
                 placeholder="placeholder"
@@ -94,8 +94,11 @@ export function Input({
 
             {/* Animated Label on Input Focus */}
             <label
-                class="textbox__label absolute top-0 pl-1 font-normal text-slate-300"
-                classList={{ 'text-rose-400': !hasValidInputLength() || !isValidInput() }}
+                class="textbox__label absolute top-0 pl-1 font-normal"
+                classList={{
+                    'text-slate-300': hasValidInputLength() && isValidInput(),
+                    'text-rose-400': !hasValidInputLength() || !isValidInput(),
+                }}
                 for={inputID}
             >
                 {children}
