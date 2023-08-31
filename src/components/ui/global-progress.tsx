@@ -26,7 +26,7 @@ export function GlobalProgress() {
         >
             <div class="relative h-[3px] w-full rounded-2xl bg-black opacity-75">
                 <div
-                    class="transition-width absolute left-0 top-0 h-full bg-emerald-400"
+                    class="transition-width absolute left-0 top-0 h-full bg-yellow-400"
                     style={{
                         width: `${progress()}%`,
                         'transition-duration': `${_widthAnimDuration}ms`,
