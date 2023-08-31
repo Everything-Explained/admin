@@ -69,10 +69,10 @@ export function Input({
         }
     }
 
-    function isInvalidInput(ex: RegExp, testStr: string) {
+    function validateInput(ex: RegExp, testStr: string) {
         const val = ex.test(testStr);
         setInputValidity(val);
-        return !val;
+        return val;
     }
 
     return (
@@ -133,15 +133,15 @@ export function Input({
             <Transition name="slide-fade">
                 <Switch>
                     <Match when={chars() < minLen && chars() > 0}>
-                        <span class="text-md absolute -bottom-[1.5rem] left-[0.5rem] font-normal text-rose-400">
+                        <span class="text-md absolute bottom-[-1.5rem] left-[0.5rem] font-normal text-rose-400">
                             <span class="text-yellow-300">{minLen - chars()}</span>
                             &nbsp;more chars required
                         </span>
                     </Match>
                     <For each={testConditions}>
                         {(c) => (
-                            <Match when={chars() > 0 && isInvalidInput(c[1], userInput())}>
-                                <span class="text-md absolute -bottom-[1.5rem] left-[0.5rem] font-normal text-rose-400">
+                            <Match when={chars() > 0 && !validateInput(c[1], userInput())}>
+                                <span class="absolute bottom-[-1.5rem] left-[0.5rem] font-normal text-rose-400">
                                     {c[0]}
                                 </span>
                             </Match>
