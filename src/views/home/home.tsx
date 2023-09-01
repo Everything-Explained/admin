@@ -1,37 +1,28 @@
 import { useBeforeLeave, useNavigate } from '@solidjs/router';
 import { useGlobalProgress } from '../../components/ui/global-progress';
-import { Button } from '../../components/ui/button';
+import './home.css';
+import { NavCard } from '../../components/nav-card';
 
 export function Home() {
     const nav = useNavigate();
     const [startProgress, stopProgress] = useGlobalProgress();
 
-    useBeforeLeave(() => {
-        startProgress();
-    });
+    // useBeforeLeave(() => {
+    //     startProgress();
+    // });
 
     return (
-        <div class="text-center">
-            <h1 class="text-5xl font-bold">Admin Panel</h1>
-            <p class="py-6 text-xl">Please select a destination below!</p>
-            <span class="mr-4">
-                <Button
-                    color="info"
-                    click={() => {
-                        console.log('hello world');
-                    }}
-                >
-                    Literature
-                </Button>
-            </span>
-            <Button
-                color="error"
-                click={() => {
-                    console.log('logs');
-                }}
-            >
-                Logs
-            </Button>
+        <div class="home__container mt-[10vh] gap-6">
+            <NavCard to="/login" title="Literature">
+                Allows you to manage literature entires: update, add, or delete them. This also
+                includes publishing or unpublishing them, depending on your access level.
+            </NavCard>
+            <NavCard to="/" disabled={true} title="Logs">
+                Allows you to manage the server logs: download or delete them.
+            </NavCard>
+            <NavCard to="/" disabled={true} title="Logs">
+                Allows you to manage users: add, update, or delete them.
+            </NavCard>
         </div>
     );
 }

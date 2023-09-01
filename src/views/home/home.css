@@ -1,0 +1,6 @@
+.home__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, auto));
+    justify-content: center;
+    align-items: start;
+}
