@@ -94,7 +94,7 @@ export function Input({
 
             {/* Animated Label on Input Focus */}
             <label
-                class="textbox__label absolute top-0 pl-1 font-normal"
+                class="textbox__label absolute top-0 select-none pl-1 font-normal"
                 classList={{
                     'text-slate-300': hasValidInputLength() && isValidInput(),
                     'text-rose-400': !hasValidInputLength() || !isValidInput(),
