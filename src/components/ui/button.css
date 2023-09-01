@@ -15,8 +15,8 @@
     transition-timing-function: ease;
 
     &.--loading {
-        background-size: 150% 100%;
-        animation: barber-pole 400ms linear infinite;
+        background-size: 4000px 100%;
+        animation: barber-pole 36s linear infinite;
     }
 
     &:active {
