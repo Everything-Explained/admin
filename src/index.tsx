@@ -5,7 +5,7 @@ import { Home } from './views/home/home';
 import { Route, Router, Routes } from '@solidjs/router';
 import { GlobalProgress } from './components/ui/global-progress';
 import { Literature } from './views/literature';
-import { Login } from './views/login';
+import { Login } from './views/login/login';
 import { LoginRouteGuard } from './components/login-route-guard';
 import { PageNotFound } from './views/404';
 
