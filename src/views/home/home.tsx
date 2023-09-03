@@ -12,7 +12,7 @@ export function Home() {
     // });
 
     return (
-        <div class="home__container mt-[10vh] gap-6">
+        <div class="home__container mx-10 mt-[10vh] gap-6">
             <NavCard to="/login" title="Literature">
                 Allows you to manage literature entires: update, add, or delete them. This also
                 includes publishing or unpublishing them, depending on your access level.
