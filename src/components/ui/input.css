@@ -1,54 +1,54 @@
 :root {
-    --input-placeholder-c: rgb(113, 113, 122); /* zinc-400 */
+  --input-placeholder-c: rgb(113, 113, 122); /* zinc-400 */
 }
 
 .textbox__label {
-    left: 0.5rem;
-    font-size: 1.15rem;
-    pointer-events: none;
-    transition-property: top, left, font-size, color;
-    transition-duration: 250ms;
+  left: 0.5rem;
+  font-size: 1.15rem;
+  pointer-events: none;
+  transition-property: top, left, font-size, color;
+  transition-duration: 250ms;
 }
 
 .textbox {
-    padding: 7px 0 5px 3px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    transition-property: border, color;
-    transition-duration: 300ms;
+  padding: 7px 0 5px 3px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition-property: border, color;
+  transition-duration: 300ms;
 
-    &::placeholder {
-        color: transparent;
-        font-family: inherit;
-        text-transform: none;
-        user-select: none;
-    }
+  &::placeholder {
+    color: transparent;
+    font-family: inherit;
+    text-transform: none;
+    user-select: none;
+  }
 
-    &:placeholder-shown ~ .textbox__label {
-        top: 1.7rem;
-        left: 0;
-        font-size: 1.3rem;
-        color: var(--input-placeholder-c);
-    }
+  &:placeholder-shown ~ .textbox__label {
+    top: 1.7rem;
+    left: 0;
+    font-size: 1.3rem;
+    color: var(--input-placeholder-c);
+  }
 
-    &:focus {
-        & ~ .textbox__label {
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0.5rem;
-            font-size: 1.15rem;
-        }
-        & ~ .textbox__bar {
-            width: 100%;
-        }
+  &:focus {
+    & ~ .textbox__label {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0.5rem;
+      font-size: 1.15rem;
     }
+    & ~ .textbox__bar {
+      width: 100%;
+    }
+  }
 }
 
 .textbox__bar {
-    pointer-events: none;
-    transition-property: width, background-color;
-    transition-duration: 300ms;
+  pointer-events: none;
+  transition-property: width, background-color;
+  transition-duration: 300ms;
 }

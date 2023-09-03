@@ -1,12 +1,12 @@
 .nav-card {
-    max-width: 26rem;
-    min-width: 20rem;
-    padding: 2rem 1rem;
-    margin: 0 auto 0 auto;
-    box-shadow: 1px 1px 20px 0px hsla(0, 0%, 0%, 0.55);
-    text-align: center;
-    p {
-        /* Experimental wrap feature */
-        text-wrap: balance;
-    }
+  max-width: 26rem;
+  min-width: 20rem;
+  padding: 2rem 1rem;
+  margin: 0 auto 0 auto;
+  box-shadow: 1px 1px 20px 0px hsla(0, 0%, 0%, 0.55);
+  text-align: center;
+  p {
+    /* Experimental wrap feature */
+    text-wrap: balance;
+  }
 }

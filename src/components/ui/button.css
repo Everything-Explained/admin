@@ -1,153 +1,153 @@
 @keyframes barber-pole {
-    from {
-        background-position-x: 0%;
-    }
-    to {
-        background-position-x: 100%;
-    }
+  from {
+    background-position-x: 0%;
+  }
+  to {
+    background-position-x: 100%;
+  }
 }
 
 .btn {
-    padding: 0.3rem 1rem;
-    letter-spacing: 0.1em;
-    transition-property: background-color, border-color, box-shadow;
-    transition-duration: 300ms;
-    transition-timing-function: ease;
+  padding: 0.3rem 1rem;
+  letter-spacing: 0.1em;
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
 
-    &.--loading {
-        background-size: 4000px 100%;
-        animation: barber-pole 36s linear infinite;
-    }
+  &.--loading {
+    background-size: 4000px 100%;
+    animation: barber-pole 36s linear infinite;
+  }
+
+  &:active {
+    top: 2px;
+    left: 2px;
+  }
+
+  &:disabled {
+    background-color: hsl(0, 0%, 30%);
+    border-color: transparent;
+    cursor: not-allowed;
 
     &:active {
-        top: 2px;
-        left: 2px;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &.btn__neutral {
+    background-color: hsl(198, 13%, 70%);
+    border-top: 1px solid hsl(198, 13%, 85%);
+    border-left: 1px solid hsl(198, 13%, 85%);
+    box-shadow: 0 0 10px 0 hsla(198, 13%, 70%, 0.5);
+
+    &:hover {
+      background-color: hsl(198, 13%, 85%);
+      box-shadow: 0 0 10px 0 hsla(198, 13%, 85%, 0.8);
     }
 
-    &:disabled {
-        background-color: hsl(0, 0%, 30%);
-        border-color: transparent;
-        cursor: not-allowed;
+    &:disabled.--loading {
+      background-color: hsl(198, 13%, 85%);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1rem,
+        hsl(198, 13%, 65%) 1rem,
+        hsl(198, 13%, 65%) 2rem
+      );
+    }
+  }
 
-        &:active {
-            top: 0;
-            left: 0;
-        }
+  &.btn__info {
+    background-color: hsl(199, 89%, 48%); /* sky-500 */
+    border-top: 1px solid hsl(199, 95%, 74%); /* sky-300 */
+    border-left: 1px solid hsl(199, 95%, 74%);
+    box-shadow: 0 0 10px 0 hsla(199, 100%, 50%, 0.5);
+
+    &:hover {
+      background-color: hsl(199, 89%, 70%);
+      box-shadow: 0 0 10px 0 hsla(199, 100%, 50%, 0.8);
     }
 
-    &.btn__neutral {
-        background-color: hsl(198, 13%, 70%);
-        border-top: 1px solid hsl(198, 13%, 85%);
-        border-left: 1px solid hsl(198, 13%, 85%);
-        box-shadow: 0 0 10px 0 hsla(198, 13%, 70%, 0.5);
+    &:disabled.--loading {
+      background-color: hsl(199, 89%, 70%);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1rem,
+        /* sky-800 */ #0284c7 1rem,
+        #0284c7 2rem
+      );
+    }
+  }
 
-        &:hover {
-            background-color: hsl(198, 13%, 85%);
-            box-shadow: 0 0 10px 0 hsla(198, 13%, 85%, 0.8);
-        }
+  &.btn__good {
+    background-color: hsl(160, 100%, 47%);
+    border-top: 1px solid hsl(160, 100%, 85%);
+    border-left: 1px solid hsl(160, 100%, 85%);
+    box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.5);
 
-        &:disabled.--loading {
-            background-color: hsl(198, 13%, 85%);
-            background-image: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 1rem,
-                hsl(198, 13%, 65%) 1rem,
-                hsl(198, 13%, 65%) 2rem
-            );
-        }
+    &:hover {
+      background-color: hsl(160, 100%, 70%);
+      box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.8);
     }
 
-    &.btn__info {
-        background-color: hsl(199, 89%, 48%); /* sky-500 */
-        border-top: 1px solid hsl(199, 95%, 74%); /* sky-300 */
-        border-left: 1px solid hsl(199, 95%, 74%);
-        box-shadow: 0 0 10px 0 hsla(199, 100%, 50%, 0.5);
+    &:disabled.--loading {
+      background-color: hsl(160, 100%, 70%);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1rem,
+        hsl(160, 100%, 43%) 1rem,
+        hsl(160, 100%, 43%) 2rem
+      );
+    }
+  }
 
-        &:hover {
-            background-color: hsl(199, 89%, 70%);
-            box-shadow: 0 0 10px 0 hsla(199, 100%, 50%, 0.8);
-        }
+  &.btn__attention {
+    background-color: hsl(47, 100%, 50%);
+    border-top: 1px solid hsl(47, 100%, 85%);
+    border-left: 1px solid hsl(47, 100%, 85%);
+    box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.5);
 
-        &:disabled.--loading {
-            background-color: hsl(199, 89%, 70%);
-            background-image: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 1rem,
-                /* sky-800 */ #0284c7 1rem,
-                #0284c7 2rem
-            );
-        }
+    &:hover {
+      background-color: hsl(47, 100%, 70%);
+      box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.8);
     }
 
-    &.btn__good {
-        background-color: hsl(160, 100%, 47%);
-        border-top: 1px solid hsl(160, 100%, 85%);
-        border-left: 1px solid hsl(160, 100%, 85%);
-        box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.5);
+    &:disabled.--loading {
+      background-color: hsl(47, 100%, 70%);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1rem,
+        hsl(47deg 100% 45%) 1rem,
+        hsl(47deg 100% 45%) 2rem
+      );
+    }
+  }
 
-        &:hover {
-            background-color: hsl(160, 100%, 70%);
-            box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.8);
-        }
+  &.btn__dangerous {
+    color: white;
+    background-color: hsl(0, 100%, 57%);
+    border-top: 1px solid hsl(0, 100%, 70%);
+    border-left: 1px solid hsl(0, 100%, 70%);
+    box-shadow: 0 0 10px 0 hsla(0, 100%, 63%, 0.7);
 
-        &:disabled.--loading {
-            background-color: hsl(160, 100%, 70%);
-            background-image: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 1rem,
-                hsl(160, 100%, 43%) 1rem,
-                hsl(160, 100%, 43%) 2rem
-            );
-        }
+    &:hover {
+      background-color: hsl(0, 100%, 65%);
+      box-shadow: 0 0 10px 0 hsla(0, 100%, 65%, 0.9);
     }
 
-    &.btn__attention {
-        background-color: hsl(47, 100%, 50%);
-        border-top: 1px solid hsl(47, 100%, 85%);
-        border-left: 1px solid hsl(47, 100%, 85%);
-        box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.5);
-
-        &:hover {
-            background-color: hsl(47, 100%, 70%);
-            box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.8);
-        }
-
-        &:disabled.--loading {
-            background-color: hsl(47, 100%, 70%);
-            background-image: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 1rem,
-                hsl(47deg 100% 45%) 1rem,
-                hsl(47deg 100% 45%) 2rem
-            );
-        }
+    &:disabled.--loading {
+      background-color: hsl(0, 100%, 65%);
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 1rem,
+        hsl(0deg 100% 54%) 1rem,
+        hsl(0deg 100% 54%) 2rem
+      );
     }
-
-    &.btn__dangerous {
-        color: white;
-        background-color: hsl(0, 100%, 57%);
-        border-top: 1px solid hsl(0, 100%, 70%);
-        border-left: 1px solid hsl(0, 100%, 70%);
-        box-shadow: 0 0 10px 0 hsla(0, 100%, 63%, 0.7);
-
-        &:hover {
-            background-color: hsl(0, 100%, 65%);
-            box-shadow: 0 0 10px 0 hsla(0, 100%, 65%, 0.9);
-        }
-
-        &:disabled.--loading {
-            background-color: hsl(0, 100%, 65%);
-            background-image: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 1rem,
-                hsl(0deg 100% 54%) 1rem,
-                hsl(0deg 100% 54%) 2rem
-            );
-        }
-    }
+  }
 }
