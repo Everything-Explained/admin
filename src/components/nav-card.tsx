@@ -18,7 +18,7 @@ export function NavCard({ children, title, disabled, to }: NavCardProps) {
   return (
     <div class="nav-card inline-block rounded-lg bg-gray-700/20">
       <h1 class="m-0 text-4xl text-yellow-400">{title}</h1>
-      <p class="py-6 text-center text-xl">
+      <p class="pb-6 pt-4 text-center text-xl">
         {isDisabled ? notImplemented : ''} {children}
       </p>
       <Button
