@@ -16,3 +16,10 @@
 .transition-width {
   transition-property: width;
 }
+
+.flex__vcenter {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
