@@ -1,15 +1,15 @@
 {
-    "semi": true,
-    "printWidth": 96,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "overrides": [
-        {
-            "files": "*.md",
-            "options": {
-                "tabWidth": 2
-            }
-        }
-    ],
-    "plugins": ["prettier-plugin-tailwindcss"]
+  "semi": true,
+  "printWidth": 96,
+  "tabWidth": 2,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ],
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
