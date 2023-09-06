@@ -8,6 +8,7 @@ import { Literature } from './views/literature';
 import { Login } from './views/login/login';
 import { LoginRouteGuard } from './components/login-route-guard';
 import { PageNotFound } from './views/404';
+import { Titlebar } from './components/titlebar';
 
 const root = document.getElementById('root');
 
@@ -26,6 +27,7 @@ render(
     <>
       <GlobalProgress />
       <Router>
+        <Titlebar />
         <Routes>
           <Route path="/login" component={Login} />
           <Route path="/" component={LoginRouteGuard}>
