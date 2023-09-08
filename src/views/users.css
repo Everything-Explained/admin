@@ -1,0 +1,11 @@
+.users__item {
+  box-shadow: 1px 1px 20px 0px hsla(0, 0%, 0%, 0.55);
+}
+
+.users__access-level {
+  width: 9.5rem;
+  text-align: right;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-variant: small-caps;
+}

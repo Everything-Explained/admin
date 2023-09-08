@@ -22,7 +22,7 @@ export function Home() {
         <NavCard to="/" disabled={true} title="Logs">
           Allows you to manage the server logs: You can download or delete them.
         </NavCard>
-        <NavCard to="/" disabled={true} title="Users">
+        <NavCard to="/users" title="Users">
           Allows you to manage users: You can add, update, or delete them.
         </NavCard>
       </div>
