@@ -117,7 +117,7 @@ export function Input({
       <Transition name="slide-fade">
         <Show when={maxLen > 0 && chars() > 0}>
           <span
-            class="text-md absolute -bottom-[1.5rem] right-0 font-normal transition-all"
+            class="absolute bottom-[-1.5rem] right-0 text-base font-normal transition-all"
             classList={{
               'text-emerald-300': hasValidInputLength() && chars() < maxLen,
               'text-yellow-300': chars() == maxLen,
@@ -133,7 +133,7 @@ export function Input({
       <Transition name="slide-fade">
         <Switch>
           <Match when={chars() < minLen && chars() > 0}>
-            <span class="text-md absolute bottom-[-1.5rem] left-[0.5rem] font-normal text-rose-400">
+            <span class="absolute bottom-[-1.5rem] left-[0.5rem] text-base font-normal text-rose-400">
               <span class="text-yellow-300">{minLen - chars()}</span>
               &nbsp;more chars required
             </span>
