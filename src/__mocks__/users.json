@@ -1,0 +1,32 @@
+[
+  {
+    "id": "0",
+    "username": "Ethan",
+    "accessLevel": 4
+  },
+  {
+    "id": "2",
+    "username": "Jason",
+    "accessLevel": 16
+  },
+  {
+    "id": "3",
+    "username": "John",
+    "accessLevel": 1
+  },
+  {
+    "id": "4",
+    "username": "Maverick",
+    "accessLevel": 8
+  },
+  {
+    "id": "5",
+    "username": "Derek",
+    "accessLevel": 2
+  },
+  {
+    "id": "6",
+    "username": "Janis",
+    "accessLevel": 8
+  }
+]
