@@ -3,18 +3,24 @@ import './select.css';
 
 type SelectProps = {
   items: string[];
-  /* CSS width value */
+
+  /* CSS height value */
   maxHeight: string;
+
   /** Default Item */
   children: string;
+
+  /** CSS width value */
+  width?: string;
 
   onChange: (val: number) => void;
 };
 
-export function Select({ items, children, onChange, maxHeight }: SelectProps) {
+export function Select({ items, children, width, onChange, maxHeight }: SelectProps) {
   let elSelect: HTMLDivElement | undefined;
   const [open, setOpenState] = createSignal(false);
   const [title, setTitle] = createSignal(children);
+  const selectWidth = width ?? '200px';
 
   const adjustedItems = ['None', ...items];
 
@@ -23,6 +29,7 @@ export function Select({ items, children, onChange, maxHeight }: SelectProps) {
   onMount(() => {
     if (elSelect) {
       document.documentElement.style.setProperty('--select-max-height', maxHeight);
+      document.documentElement.style.setProperty('--select-width', selectWidth);
     }
   });
 
@@ -51,12 +58,14 @@ export function Select({ items, children, onChange, maxHeight }: SelectProps) {
     <>
       <div
         ref={elSelect}
-        class="__select flex cursor-pointer gap-4 border-zinc-500 px-3"
+        class="__select flex cursor-pointer gap-4 border-zinc-500 px-1"
         classList={{ '--open': open() }}
         onmousedown={toggleOpen}
       >
         <label class="cursor-pointer font-normal text-zinc-500">{title()}</label>
-        <div class="select__arrow bg-zinc-500"></div>
+        <div class="flex-1 text-right">
+          <div class="select__arrow bg-zinc-500"></div>
+        </div>
         <div class="select__items bg-gray-700/95">
           <For each={adjustedItems}>
             {(item, index) => (

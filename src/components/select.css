@@ -1,12 +1,13 @@
 :root {
   --select-max-height: 200px;
+  --select-width: 200px;
 }
 
 /* Reset Select Styles */
 .__select {
   position: relative;
   align-items: center;
-  max-width: fit-content;
+  max-width: var(--select-width);
   border-bottom-width: 1px;
   user-select: none;
 
@@ -27,8 +28,9 @@
 
 .select__arrow {
   display: inline-block;
-  width: 0.75rem;
-  height: 0.5rem;
+  text-align: right;
+  width: 0.8rem;
+  height: 0.55rem;
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   user-select: none;
   transition-property: rotate, background-color;
@@ -37,17 +39,16 @@
 
 .select__items {
   position: absolute;
-  top: 103%;
+  top: 100%;
   left: 0;
   width: 100%;
   max-height: 0;
   overflow: hidden;
-  border-top: none;
   border-bottom-left-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
   z-index: 10;
   transition-property: max-height;
-  transition-duration: 300ms;
+  transition-duration: 250ms;
 
   & div {
     border: 2px solid rgb(75, 85, 99);
@@ -55,6 +56,11 @@
     border-bottom: 1px solid rgb(75, 85, 99);
     transition-property: color, background-color;
     transition-duration: 400ms;
+
+    /* Top of select menu */
+    &:first-child {
+      border-top: 2px solid rgb(75, 85, 99);
+    }
 
     &:hover {
       background-color: rgba(31, 41, 55, 0.5);
