@@ -1,4 +1,4 @@
-import { For, createSignal, onCleanup, onMount } from 'solid-js';
+import { For, createMemo, createSignal, onCleanup, onMount } from 'solid-js';
 import './select.css';
 
 type SelectProps = {
@@ -20,6 +20,9 @@ export function Select({ items, children, width, onChange, maxHeight }: SelectPr
   let elSelect: HTMLDivElement | undefined;
   const [open, setOpenState] = createSignal(false);
   const [title, setTitle] = createSignal(children);
+  const isDefault = createMemo(() => {
+    return title() == children;
+  });
   const selectWidth = width ?? '200px';
 
   const adjustedItems = ['None', ...items];
@@ -58,11 +61,20 @@ export function Select({ items, children, width, onChange, maxHeight }: SelectPr
     <>
       <div
         ref={elSelect}
-        class="__select flex cursor-pointer gap-4 border-zinc-500 px-1"
-        classList={{ '--open': open() }}
+        class="__select flex cursor-pointer gap-4 px-1"
+        classList={{
+          '--open': open(),
+          'border-zinc-500': isDefault(),
+          'border-emerald-300': !isDefault(),
+        }}
         onmousedown={toggleOpen}
       >
-        <label class="cursor-pointer font-normal text-zinc-500">{title()}</label>
+        <label
+          class="cursor-pointer font-normal transition-colors duration-300"
+          classList={{ 'text-zinc-500': isDefault(), 'text-emerald-300': !isDefault() }}
+        >
+          {title()}
+        </label>
         <div class="flex-1 text-right">
           <div class="select__arrow bg-zinc-500"></div>
         </div>
