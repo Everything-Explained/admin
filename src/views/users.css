@@ -1,11 +1,49 @@
 .users__item {
   box-shadow: 1px 1px 20px 0px hsla(0, 0%, 0%, 0.55);
+  cursor: pointer;
+  transition-property: color, background-color;
+  transition-duration: 300ms;
+}
+
+.users-item__name {
+  vertical-align: middle;
+  padding-left: 0.75rem;
+  border-right: 3px solid hsla(0, 0%, 0%, 0.55);
+  user-select: none;
 }
 
 .users__access-level {
-  width: 9.5rem;
-  text-align: right;
+  width: 10rem;
+  padding-right: 0.75rem;
+  align-self: center;
+  text-align: center;
   font-weight: 600;
   letter-spacing: 1px;
   font-variant: small-caps;
+}
+
+.users__edit-wrapper {
+  overflow: hidden;
+  height: 0;
+
+  &.--editing {
+    overflow: visible;
+    height: auto;
+  }
+}
+
+.users__edit {
+  transform: translateX(2.5rem);
+  height: 0;
+  opacity: 0;
+  background-color: hsla(200, 13%, 4%, 0.5);
+  transition:
+    transform 250ms ease,
+    opacity 300ms linear;
+
+  &.--editing {
+    opacity: 1;
+    transform: translateX(0);
+    height: auto;
+  }
 }
