@@ -7,7 +7,7 @@
 .__select {
   position: relative;
   align-items: center;
-  max-width: var(--select-width);
+  width: var(--select-width);
   border-bottom-width: 1px;
   user-select: none;
 
