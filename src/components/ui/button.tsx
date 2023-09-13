@@ -24,7 +24,7 @@ export const Button = (props: BtnProps) => {
       type="button"
       disabled={isDisabled || isLoading()}
       onclick={click}
-      class="btn relative select-none rounded-md font-extrabold uppercase text-black"
+      class="btn relative select-none rounded-md font-semibold uppercase text-black"
       classList={{
         [`btn__${colorType}`]: !isDisabled,
         '--loading': isLoading(),
