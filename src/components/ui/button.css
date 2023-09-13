@@ -26,7 +26,8 @@
 
   &:disabled {
     background-color: hsl(0, 0%, 30%);
-    border-color: transparent;
+    border-top: 1px solid transparent;
+    border-left: 1px solid transparent;
     cursor: not-allowed;
 
     &:active {
