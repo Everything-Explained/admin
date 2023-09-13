@@ -20,6 +20,7 @@ type InputProps = {
   type: 'text' | 'password';
   clearSignal?: Signal<boolean>;
   children: string;
+  onChange: (isValid: boolean, val: string) => void;
 };
 
 export type InputCondition = [msg: string, test: RegExp, expect: boolean];
@@ -29,6 +30,7 @@ export function Input({
   maxlength,
   children,
   clearSignal,
+  onChange,
   conditions,
   type,
   classes,
@@ -66,6 +68,10 @@ export function Input({
 
     if (myInput) {
       setUserInput(myInput.value);
+      onChange(
+        hasValidInputLength() && isValidInput() && !!myInput.value.length,
+        myInput.value,
+      );
     }
   }
 
