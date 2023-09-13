@@ -11,8 +11,7 @@ type BtnProps = {
 };
 
 export const Button = (props: BtnProps) => {
-  const { click, disabled, color, children } = props;
-  const isDisabled = disabled ?? false;
+  const { click, color, children } = props;
   const colorType = color ?? 'neutral';
 
   const isLoading = createMemo(() => {
@@ -22,13 +21,13 @@ export const Button = (props: BtnProps) => {
   return (
     <button
       type="button"
-      disabled={isDisabled || isLoading()}
+      disabled={isLoading() ? true : props.disabled ?? false}
       onclick={click}
       class="btn relative select-none rounded-md font-semibold uppercase text-black"
       classList={{
-        [`btn__${colorType}`]: !isDisabled,
+        [`btn__${colorType}`]: !props.disabled,
         '--loading': isLoading(),
-        'text-neutral-400': isDisabled && !isLoading(),
+        'text-neutral-400': props.disabled && !isLoading(),
       }}
     >
       {children}
