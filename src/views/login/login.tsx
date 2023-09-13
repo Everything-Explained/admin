@@ -18,9 +18,9 @@ export function Login() {
   }
 
   const passwordConditions: InputCondition[] = [
-    ['Missing 1 number', /\d/],
-    ['Missing 1 lowercase character', /[a-z]/],
-    ['Missing 1 uppercase character', /[A-Z]/],
+    ['Missing 1 number', /\d/, true],
+    ['Missing 1 lowercase character', /[a-z]/, true],
+    ['Missing 1 uppercase character', /[A-Z]/, true],
   ];
 
   return (

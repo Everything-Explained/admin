@@ -22,7 +22,7 @@ type InputProps = {
   children: string;
 };
 
-export type InputCondition = [msg: string, test: RegExp];
+export type InputCondition = [msg: string, test: RegExp, expect: boolean];
 
 export function Input({
   minlength,
@@ -69,17 +69,17 @@ export function Input({
     }
   }
 
-  function validateInput(ex: RegExp, testStr: string) {
-    const val = ex.test(testStr);
+  function validateInput(ex: RegExp, testStr: string, expect: boolean) {
+    const val = expect ? !!testStr.match(ex) : !testStr.match(ex);
     setInputValidity(val);
     return val;
   }
 
   return (
-    <div class={`relative mb-8 ${customClasses}`}>
+    <div class={`relative pb-8 pt-5 ${customClasses}`}>
       <input
         id={inputID}
-        class="textbox mt-5 w-full border-b-[1px] bg-transparent text-emerald-300"
+        class="textbox w-full border-b-[1px] bg-transparent text-emerald-300"
         classList={{
           'border-b-zinc-500': chars() < minLen || !isValidInput(),
           'border-b-emerald-300': chars() >= minLen,
@@ -105,19 +105,19 @@ export function Input({
       </label>
 
       {/* Animated Border on Input Focus */}
-      <span
-        class="textbox__bar absolute bottom-[-1px] left-0 h-[2px] w-0"
+      <div
+        class="textbox__bar relative top-[-1px] h-[2px] w-0"
         classList={{
           'bg-zinc-500': chars() < minLen || !isValidInput(),
           'bg-emerald-300': chars() >= minLen && isValidInput(),
         }}
-      ></span>
+      ></div>
 
       {/* Character Tally */}
       <Transition name="slide-fade">
         <Show when={maxLen > 0 && chars() > 0}>
           <span
-            class="absolute bottom-[-1.5rem] right-0 text-base font-normal transition-all"
+            class="absolute bottom-[0.5rem] right-0 text-base font-normal transition-all"
             classList={{
               'text-emerald-300': hasValidInputLength() && chars() < maxLen,
               'text-yellow-300': chars() == maxLen,
@@ -133,15 +133,15 @@ export function Input({
       <Transition name="slide-fade">
         <Switch>
           <Match when={chars() < minLen && chars() > 0}>
-            <span class="absolute bottom-[-1.5rem] left-[0.5rem] text-base font-normal text-rose-400">
+            <span class="absolute bottom-[0.5rem] left-[0.5rem] text-base font-normal text-rose-400">
               <span class="text-yellow-300">{minLen - chars()}</span>
               &nbsp;more chars required
             </span>
           </Match>
           <For each={testConditions}>
             {(c) => (
-              <Match when={chars() > 0 && !validateInput(c[1], userInput())}>
-                <span class="absolute bottom-[-1.5rem] left-[0.5rem] font-normal text-rose-400">
+              <Match when={chars() > 0 && !validateInput(c[1], userInput(), c[2])}>
+                <span class="absolute bottom-[0.5rem] left-[0.5rem] text-base font-normal text-rose-400">
                   {c[0]}
                 </span>
               </Match>
