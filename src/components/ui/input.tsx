@@ -30,6 +30,12 @@ export class InputConditions {
 
   static lettersOnly: InputCondition = ['Only a-z or A-Z is allowed', /^[a-z\s]+$/gi, true];
 
+  static needNumber: InputCondition = ['Missing a number', /\d/, true];
+
+  static needLowercase: InputCondition = ['Missing 1 lowercase character', /[a-z]/, true];
+
+  static needUppercase: InputCondition = ['Missing 1 uppercase character', /[A-Z]/, true];
+
   static isString(str: string): InputCondition {
     return [`"${str}" already exists`, new RegExp(`^${str}$`, 'i'), false];
   }
