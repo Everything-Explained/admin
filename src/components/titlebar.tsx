@@ -1,7 +1,6 @@
 import './titlebar.css';
 import { Logo } from './logo';
 import { Link } from './link';
-import { Avatar } from './avatar';
 import { ProfileButton } from './profile-button';
 
 export function Titlebar() {
