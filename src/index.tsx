@@ -9,6 +9,7 @@ import { Login } from './views/login/login';
 import { LoginRouteGuard } from './components/login-route-guard';
 import { PageNotFound } from './views/404';
 import { Titlebar } from './components/titlebar';
+import { Profile } from './views/profile';
 import { Users } from './views/users';
 
 const root = document.getElementById('root');
@@ -36,6 +37,7 @@ render(
             <Route path="/literature" component={Literature} />
             <Route path="/users" component={Users} />
           </Route>
+          <Route path="/profile" component={Profile} />
           <Route path="*" component={PageNotFound} />
         </Routes>
       </Router>
