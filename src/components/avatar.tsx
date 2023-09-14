@@ -1,24 +1,35 @@
-import { createMemo } from 'solid-js';
+import { createEffect, createMemo, createSignal } from 'solid-js';
+import { UserAccessLevel } from '../database/db-user';
+import { useAccessLevelColors } from '../utils/access-levels';
 
 type AvatarProps = {
-  authed: boolean;
+  accessLevel?: UserAccessLevel;
 };
 
 export function Avatar(props: AvatarProps) {
+  const accessLevel = createMemo(() => {
+    return props.accessLevel;
+  });
+
+  const [bgColor, setBgColor] = createSignal('');
+  const [textColor, setTextColor] = createSignal('');
+
+  createEffect(() => {
+    const level = accessLevel();
+    if (level) {
+      const [bg] = useAccessLevelColors(`${level}`);
+      setBgColor(bg);
+      setTextColor(level >= UserAccessLevel.MODERATOR ? 'text-yellow-400' : 'text-zinc-950');
+    } else {
+      setBgColor('bg-gray-700');
+      setTextColor('text-slate-400');
+    }
+  });
+
   return (
-    <div
-      class="relative h-10 w-10 overflow-hidden rounded-full"
-      classList={{
-        'bg-gray-700': !props.authed,
-        'bg-rose-600': props.authed,
-      }}
-    >
+    <div class={`relative h-10 w-10 overflow-hidden rounded-full ${bgColor()}`}>
       <svg
-        class="absolute -left-1 h-12 w-12"
-        classList={{
-          'text-slate-400': !props.authed,
-          'text-yellow-400': props.authed,
-        }}
+        class={`absolute -left-1 h-12 w-12 ${textColor()}`}
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
