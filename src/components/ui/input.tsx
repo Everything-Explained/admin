@@ -25,6 +25,16 @@ type InputProps = {
 
 export type InputCondition = [msg: string, test: RegExp, expect: boolean];
 
+export class InputConditions {
+  static noWhitespace: InputCondition = ['No whitespace allowed', /\s/g, false];
+
+  static lettersOnly: InputCondition = ['Only a-z or A-Z is allowed', /^[a-z\s]+$/gi, true];
+
+  static isString(str: string): InputCondition {
+    return [`"${str}" already exists`, new RegExp(`^${str}$`, 'i'), false];
+  }
+}
+
 export function Input({
   minlength,
   maxlength,
