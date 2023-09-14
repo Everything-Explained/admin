@@ -15,14 +15,15 @@ export function Avatar(props: AvatarProps) {
   const [textColor, setTextColor] = createSignal('');
 
   createEffect(() => {
-    const level = accessLevel();
-    if (level) {
-      const [bg] = useAccessLevelColors(`${level}`);
+    const level = accessLevel() ?? 0;
+    if (level > -1) {
+      const [bg, fg] = useAccessLevelColors(`${level}`);
       setBgColor(bg);
+      if (level == 0) {
+        setTextColor(fg);
+        return;
+      }
       setTextColor(level >= UserAccessLevel.MODERATOR ? 'text-yellow-400' : 'text-zinc-950');
-    } else {
-      setBgColor('bg-gray-700');
-      setTextColor('text-slate-400');
     }
   });
 

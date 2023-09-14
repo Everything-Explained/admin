@@ -3,6 +3,7 @@ import { UserAccessLevel } from '../database/db-user';
 const accessLevels = ['Admin', 'Moderator', 'Head Writer', 'Senior Writer', 'Writer'];
 
 const accessLevelColors = {
+  '0': ['bg-gray-700', 'text-slate-400'],
   '1': ['bg-sky-400', 'text-black'],
   '2': ['bg-emerald-400', 'text-black'],
   '4': ['bg-fuchsia-400', 'text-black'],

@@ -1,4 +1,5 @@
 export enum UserAccessLevel {
+  GUEST = 0,
   WRITER = 1,
   SENIORWRITER = 2,
   HEADWRITER = 4,
