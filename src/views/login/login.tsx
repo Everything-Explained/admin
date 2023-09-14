@@ -1,8 +1,10 @@
-import { createSignal } from 'solid-js';
-import { Button } from '../../components/ui/button';
-import { Input, InputCondition } from '../../components/ui/input';
 import './login.css';
+import { createMemo, createSignal } from 'solid-js';
+import { Button } from '../../components/ui/button';
+import { Input, InputConditions } from '../../components/ui/input';
 import { useGlobalProgress } from '../../components/ui/global-progress';
+
+type InputState<T> = [isValid: boolean, val: T];
 
 export function Login() {
   const signalClear = createSignal(false);
@@ -17,34 +19,57 @@ export function Login() {
     setIsLoading(isStarted);
   }
 
-  const passwordConditions: InputCondition[] = [
-    ['Missing 1 number', /\d/, true],
-    ['Missing 1 lowercase character', /[a-z]/, true],
-    ['Missing 1 uppercase character', /[A-Z]/, true],
-  ];
-
   return (
     <form class="login_container mx-auto mt-[10vh] max-w-[20rem] rounded-lg bg-gray-700/20">
       <h1 class="mb-1 text-center text-yellow-400">Login</h1>
       <p class="my-2">In order to use the admin panel, you must login.</p>
-      <Input type="text" clearSignal={signalClear} minlength={4} maxlength={20}>
-        Username
+      <LoginForm />
+    </form>
+  );
+}
+
+function LoginForm() {
+  const [usernameState, setUsernameState] = createSignal<InputState<string>>([false, '']);
+  const [passwordState, setPasswordState] = createSignal<InputState<string>>([false, '']);
+
+  const isFormValid = createMemo(() => {
+    return usernameState()[0] && passwordState()[0];
+  });
+
+  function submit() {
+    console.log('hello world');
+  }
+
+  return (
+    <>
+      <Input
+        type="text"
+        minlength={3}
+        maxlength={20}
+        conditions={[InputConditions.noWhitespace, InputConditions.lettersOnly]}
+        onChange={(isValid, val) => setUsernameState([isValid, val])}
+      >
+        First Name or Alias
       </Input>
       <Input
         type="password"
-        conditions={passwordConditions}
-        clearSignal={signalClear}
+        conditions={[
+          InputConditions.needNumber,
+          InputConditions.needLowercase,
+          InputConditions.needUppercase,
+        ]}
+        onChange={(isValid, val) => setPasswordState([isValid, val])}
         minlength={6}
       >
         Password
       </Input>
       <div class="text-right">
         <span class="">
-          <Button color="attention" click={() => console.log('loading')}>
+          <Button color="attention" disabled={!isFormValid()} click={submit}>
             Login
           </Button>
         </span>
       </div>
-    </form>
+    </>
   );
 }
