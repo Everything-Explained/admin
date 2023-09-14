@@ -4,9 +4,9 @@ const accessLevels = ['Admin', 'Moderator', 'Head Writer', 'Senior Writer', 'Wri
 
 const accessLevelColors = {
   '0': ['bg-gray-700', 'text-slate-400'],
-  '1': ['bg-sky-400', 'text-black'],
-  '2': ['bg-emerald-400', 'text-black'],
-  '4': ['bg-fuchsia-400', 'text-black'],
+  '1': ['bg-sky-300', 'text-black'],
+  '2': ['bg-emerald-300', 'text-black'],
+  '4': ['bg-fuchsia-500', 'text-white'],
   '8': ['bg-violet-700', 'text-white'],
   '16': ['bg-rose-600', 'text-white'],
 } as const;
