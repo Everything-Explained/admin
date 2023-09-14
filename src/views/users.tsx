@@ -2,7 +2,7 @@ import './users.css';
 import { For, Show, createComputed, createEffect, createMemo, createSignal } from 'solid-js';
 import { MockDatabaseUser } from '../__mocks__/mock_db-user';
 import { User, UserAccessLevel, useUserDatabase } from '../database/db-user';
-import { Input, InputCondition } from '../components/ui/input';
+import { Input, InputCondition, InputConditions } from '../components/ui/input';
 import { Select } from '../components/select';
 import { Button } from '../components/ui/button';
 import {
@@ -81,14 +81,7 @@ type EditPaneProps = {
 };
 function UsersEditPane(props: EditPaneProps) {
   const { id, user, onSubmit } = props;
-  const noSpaces: InputCondition = ['No whitespace allowed', /\s/g, false];
-  const lettersOnly: InputCondition = ['Only a-z or A-Z is allowed', /^[a-z\s]+$/gi, true];
   const [isLoading, setIsLoading] = createSignal(false);
-  const hasExistingName: InputCondition = [
-    'Name already exists',
-    new RegExp(`^${user.username.toLowerCase()}$`, 'i'),
-    false,
-  ];
 
   const [userNameState, setUserNameState] = createSignal<InputState<string>>([false, '']);
   const [accessLevelState, setAccessLevelState] = createSignal<InputState<number>>([false, -1]);
@@ -129,7 +122,11 @@ function UsersEditPane(props: EditPaneProps) {
               type="text"
               maxlength={20}
               minlength={4}
-              conditions={[hasExistingName, noSpaces, lettersOnly]}
+              conditions={[
+                InputConditions.isString(user.username),
+                InputConditions.noWhitespace,
+                InputConditions.lettersOnly,
+              ]}
               onChange={(isValid, val) => setUserNameState([isValid, val])}
             >
               Edit Username
