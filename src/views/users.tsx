@@ -93,7 +93,7 @@ function UsersEditPane(props: EditPaneProps) {
   const [userNameState, setUserNameState] = createSignal<InputState<string>>([false, '']);
   const [accessLevelState, setAccessLevelState] = createSignal<InputState<number>>([false, -1]);
 
-  const isOpen = createMemo((val) => {
+  const isOpen = createMemo(() => {
     return props.open < 0 ? false : props.open == id;
   });
 
