@@ -1,5 +1,5 @@
 import './users.css';
-import { For, Show, createMemo, createSignal } from 'solid-js';
+import { For, Show, createMemo, createResource, createSignal } from 'solid-js';
 import { MockDatabaseUser } from '../__mocks__/mock_db-user';
 import { User, UserAccessLevel, useUserDatabase } from '../database/db-user';
 import { Input, InputConditions } from '../components/ui/input';
@@ -15,24 +15,22 @@ type InputState<T> = [isValid: boolean, val: T];
 
 export function Users() {
   const userDB = useUserDatabase(new MockDatabaseUser());
-  const [users, setUsers] = createSignal<User[]>([]);
-  const [openID, setOpenID] = createSignal(-1);
-
-  userDB.users.then((res) => {
-    const [error, users] = res;
+  const [users] = createResource<User[]>(async () => {
+    const [error, users] = await userDB.users;
     if (error == null) {
-      const orderedUsers = users.toSorted((a, b) => {
+      return users.toSorted((a, b) => {
         return b.accessLevel - a.accessLevel;
       });
-      setUsers(orderedUsers);
     }
+    throw Error(error);
   });
+  const [openID, setOpenID] = createSignal(-1);
 
   return (
     <>
       <header class="my-7 text-center text-4xl">Users</header>
       <div class="mx-auto flex min-w-0 max-w-lg flex-col text-xl">
-        <Show when={users().length}>
+        <Show when={users()}>
           <For each={users()}>
             {(user, index) => (
               <>
