@@ -18,15 +18,15 @@ export function Home() {
           Allows you to manage literature entires: You can update, add, delete, publish, or
           unpublish them, depending on your access level.
         </NavCard>
-        <NavCard to="/videos" title="Videos">
+        <NavCard to="/users" title="Users">
+          Allows you to manage users: You can add, update, or delete them.
+        </NavCard>
+        <NavCard to="/videos" title="Videos" disabled>
           Allows you to manage video entires: you can update, add, delete, publish, or unpublish
           them, depending on your access level.
         </NavCard>
-        <NavCard to="/" disabled={true} title="Logs">
+        <NavCard to="/" disabled title="Logs">
           Allows you to manage the server logs: You can download or delete them.
-        </NavCard>
-        <NavCard to="/users" title="Users">
-          Allows you to manage users: You can add, update, or delete them.
         </NavCard>
       </div>
     </>
