@@ -3,7 +3,7 @@ import users from './users.json';
 
 export class MockDatabaseUser implements UserDatabase {
   get users(): UserResponse<User[]> {
-    return Promise.resolve([null, users as User[]]);
+    return Promise.resolve([null, users satisfies User[]]);
   }
 
   find(id: string): UserResponse<User> {
