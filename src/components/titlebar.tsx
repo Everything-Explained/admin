@@ -1,4 +1,3 @@
-import './titlebar.css';
 import { Logo } from './logo';
 import { Link } from './link';
 import { ProfileButton } from './profile-button';
@@ -6,7 +5,7 @@ import { ProfileButton } from './profile-button';
 export function Titlebar() {
   return (
     <>
-      <div class="titlebar__container flex gap-2 border-neutral-800">
+      <div class="flex gap-2 border-b-2 border-zinc-800/80 bg-neutral-950/50 px-2 py-1">
         <Link to="/">
           <header class="flex__vcenter gap-3 px-2 py-2 text-2xl">
             <Logo />
