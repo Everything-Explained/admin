@@ -16,6 +16,6 @@ export type User = {
   accessLevel: UserAccessLevel;
 };
 
-export function useUserDatabase() {
+export function useUserDatabase(): DBEntry<User> {
   return new MockDatabaseUser(new URL('https://placeholder.com'));
 }
