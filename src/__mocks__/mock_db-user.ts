@@ -9,7 +9,7 @@ export class MockDatabaseUser implements DBEntry<User> {
 
   constructor(private url: URL) {}
 
-  loadEntries(): DBResponse<boolean> {
+  loadEntries(): DBResponse<true> {
     const [, setUsers] = this.#users;
     setUsers(users satisfies User[]);
     return Promise.resolve([null, true]);
