@@ -14,7 +14,7 @@ import {
 type InputState<T> = [isValid: boolean, val: T];
 
 export function Users() {
-  const userDB = useUserDatabase(new MockDatabaseUser(new URL('https://placeholder.com')));
+  const userDB = useUserDatabase();
   const [users] = createResource<User[]>(async () => {
     const [error] = await userDB.loadEntries();
     if (error == null) {

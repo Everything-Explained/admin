@@ -1,3 +1,4 @@
+import { MockDatabaseUser } from '../__mocks__/mock_db-user';
 import { DBEntry } from './db';
 
 export enum UserAccessLevel {
@@ -15,6 +16,6 @@ export type User = {
   accessLevel: UserAccessLevel;
 };
 
-export function useUserDatabase(db: DBEntry<User>) {
-  return db;
+export function useUserDatabase() {
+  return new MockDatabaseUser(new URL('https://placeholder.com'));
 }
