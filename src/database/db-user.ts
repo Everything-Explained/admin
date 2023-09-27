@@ -1,3 +1,5 @@
+import { DBEntry } from './db';
+
 export enum UserAccessLevel {
   GUEST = 0,
   WRITER = 1,
@@ -13,16 +15,6 @@ export type User = {
   accessLevel: UserAccessLevel;
 };
 
-export type UserResponse<T> = Promise<[error: string, null] | [null, T]>;
-
-export interface UserDatabase {
-  get users(): UserResponse<User[]>;
-  find(id: string): UserResponse<User>;
-  delete(id: string): UserResponse<true>;
-  add(user: User): UserResponse<true>;
-  edit(user: User, key: keyof User): UserResponse<true>;
-}
-
-export function useUserDatabase(db: UserDatabase) {
+export function useUserDatabase(db: DBEntry<User>) {
   return db;
 }

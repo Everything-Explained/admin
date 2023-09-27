@@ -14,11 +14,11 @@ import {
 type InputState<T> = [isValid: boolean, val: T];
 
 export function Users() {
-  const userDB = useUserDatabase(new MockDatabaseUser());
+  const userDB = useUserDatabase(new MockDatabaseUser(new URL('https://placeholder.com')));
   const [users] = createResource<User[]>(async () => {
-    const [error, users] = await userDB.users;
+    const [error] = await userDB.loadEntries();
     if (error == null) {
-      return users.toSorted((a, b) => {
+      return userDB.entries().toSorted((a, b) => {
         return b.accessLevel - a.accessLevel;
       });
     }

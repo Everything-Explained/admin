@@ -1,24 +1,37 @@
-import { User, UserDatabase, UserResponse } from '../database/db-user';
+import { Accessor, createSignal } from 'solid-js';
+import { DBEntry, DBResponse } from '../database/db';
+import { User } from '../database/db-user';
 import users from './users.json';
 
-export class MockDatabaseUser implements UserDatabase {
-  get users(): UserResponse<User[]> {
-    return Promise.resolve([null, users satisfies User[]]);
+export class MockDatabaseUser implements DBEntry<User> {
+  #users = createSignal<User[]>([]);
+  entries = this.#users[0];
+
+  constructor(private url: URL) {}
+
+  loadEntries(): DBResponse<boolean> {
+    const [, setUsers] = this.#users;
+    setUsers(users satisfies User[]);
+    return Promise.resolve([null, true]);
   }
 
-  find(id: string): UserResponse<User> {
+  findByID(id: string): User | null {
     throw new Error('Method not implemented.');
   }
 
-  delete(id: string): UserResponse<true> {
+  fuzzyFind(name: string): User[] | null {
+    return this.entries().filter((v) => v.username.includes(name)) ?? null;
+  }
+
+  delete<K>(id: string): DBResponse<K> {
     throw new Error('Method not implemented.');
   }
 
-  add(user: User): UserResponse<true> {
+  add<K>(id: string): DBResponse<K> {
     throw new Error('Method not implemented.');
   }
 
-  edit(user: User, key: keyof User): UserResponse<true> {
+  edit<K>(entry: User): DBResponse<K> {
     throw new Error('Method not implemented.');
   }
 }
