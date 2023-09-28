@@ -6,7 +6,7 @@ export interface DBEntry<T> {
   entries: Accessor<T[]>;
   findByID(id: string): T | null;
   fuzzyFind(entryProp: string): T[] | null;
-  loadEntries(): DBResponse<true>;
+  loadEntries(type?: string): DBResponse<true>;
   delete<K>(id: string): DBResponse<K>;
   add<K>(id: string): DBResponse<K>;
   edit<K>(entry: T): DBResponse<K>;
