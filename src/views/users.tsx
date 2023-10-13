@@ -36,7 +36,7 @@ export function Users() {
               <>
                 <div
                   class="users__item flex flex-row gap-4 rounded-lg bg-gray-700/20 text-slate-200"
-                  onmousedown={() => setOpenID(index() == openID() ? -1 : index())}
+                  onClick={() => setOpenID(index() == openID() ? -1 : index())}
                 >
                   <div class="users-item__name flex-1 pb-2 pt-3 font-normal">
                     {user.username}
