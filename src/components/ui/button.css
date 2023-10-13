@@ -8,11 +8,30 @@
 }
 
 .btn {
+  --_text-c: var(--text-c, black);
+  --_bg-c: var(--bg-c, hsl(198, 13%, 70%));
+  --_bxs-c: var(--bxs-c, hsla(198, 13%, 70%, 0.5));
+  --_b-c: var(--b-c, hsl(198, 13%, 85%));
+  --_bg-h-c: var(--bg-h-c, hsl(198, 13%, 85%));
+  --_bxs-h-c: var(--bxs-h-c, hsla(198, 13%, 85%, 0.8));
+  --_loading-bg-c: var(--loading-bg-c, hsl(198, 13%, 85%));
+  --_loading-grad-c: var(--loading-grad-c, hsl(198, 13%, 65%));
+  --_loading-text-c: var(--loading-text-c, var(--_text-c));
+
   padding: 0.3rem 1rem;
+  box-shadow: 0 0 5px 0 var(--_bxs-c);
+  border-top: 1px solid var(--_b-c);
+  border-left: 1px solid var(--_b-c);
+  background-color: var(--_bg-c);
+  color: var(--_text-c);
   letter-spacing: 0.1em;
   transition-property: background-color, border-color, box-shadow;
   transition-duration: 300ms;
-  transition-timing-function: ease;
+
+  &:hover {
+    background-color: var(--_bg-h-c);
+    box-shadow: 0 0 6px 1px var(--_bxs-h-c);
+  }
 
   &.--loading {
     background-size: 4000px 100%;
@@ -25,130 +44,69 @@
   }
 
   &:disabled {
+    box-shadow: none;
+    border-color: transparent;
     background-color: hsl(0, 0%, 30%);
-    border-top: 1px solid transparent;
-    border-left: 1px solid transparent;
+    color: rgb(163, 163, 163);
     cursor: not-allowed;
 
     &:active {
       top: 0;
       left: 0;
     }
-  }
 
-  &.btn__neutral {
-    background-color: hsl(198, 13%, 70%);
-    border-top: 1px solid hsl(198, 13%, 85%);
-    border-left: 1px solid hsl(198, 13%, 85%);
-    box-shadow: 0 0 10px 0 hsla(198, 13%, 70%, 0.5);
-
-    &:hover {
-      background-color: hsl(198, 13%, 85%);
-      box-shadow: 0 0 10px 0 hsla(198, 13%, 85%, 0.8);
-    }
-
-    &:disabled.--loading {
-      background-color: hsl(198, 13%, 85%);
+    &.--loading {
+      border-color: var(--_b-c);
+      background-color: var(--_loading-bg-c);
       background-image: repeating-linear-gradient(
         -45deg,
         transparent,
         transparent 1rem,
-        hsl(198, 13%, 65%) 1rem,
-        hsl(198, 13%, 65%) 2rem
+        var(--_loading-grad-c) 1rem,
+        var(--_loading-grad-c) 2rem
       );
+      color: var(--_loading-text-c);
     }
   }
 
-  &.btn__info {
-    background-color: hsl(199, 89%, 48%); /* sky-500 */
-    border-top: 1px solid hsl(199, 95%, 74%); /* sky-300 */
-    border-left: 1px solid hsl(199, 95%, 74%);
-    box-shadow: 0 0 10px 0 hsla(199, 100%, 50%, 0.5);
-
-    &:hover {
-      background-color: hsl(199, 89%, 70%);
-      box-shadow: 0 0 10px 0 hsla(199, 100%, 50%, 0.8);
-    }
-
-    &:disabled.--loading {
-      background-color: hsl(199, 89%, 70%);
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 1rem,
-        /* sky-800 */ #0284c7 1rem,
-        #0284c7 2rem
-      );
-    }
+  &.--info {
+    --bg-c: hsl(199, 89%, 48%); /* sky-500 */
+    --b-c: hsl(199, 95%, 74%); /* sky-300 */
+    --bg-h-c: hsl(199, 89%, 70%);
+    --bxs-c: hsla(199, 100%, 50%, 0.5);
+    --bxs-h-c: hsla(199, 100%, 50%, 0.8);
+    --loading-bg-c: hsl(199, 89%, 70%);
+    --loading-grad-c: hsl(200, 75%, 57%);
   }
 
-  &.btn__good {
-    background-color: hsl(160, 100%, 47%);
-    border-top: 1px solid hsl(160, 100%, 85%);
-    border-left: 1px solid hsl(160, 100%, 85%);
-    box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.5);
-
-    &:hover {
-      background-color: hsl(160, 100%, 70%);
-      box-shadow: 0 0 10px 0 hsla(160, 100%, 70%, 0.8);
-    }
-
-    &:disabled.--loading {
-      background-color: hsl(160, 100%, 70%);
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 1rem,
-        hsl(160, 100%, 43%) 1rem,
-        hsl(160, 100%, 43%) 2rem
-      );
-    }
+  &.--good {
+    --b-c: hsl(160, 100%, 85%);
+    --bg-c: hsl(160, 100%, 47%);
+    --bg-h-c: hsl(160, 100%, 70%);
+    --bxs-c: hsla(160, 100%, 70%, 0.5);
+    --bxs-h-c: hsla(160, 100%, 70%, 0.8);
+    --loading-bg-c: hsl(160, 100%, 70%);
+    --loading-grad-c: hsl(160, 100%, 43%);
   }
 
-  &.btn__attention {
-    background-color: hsl(47, 100%, 50%);
-    border-top: 1px solid hsl(47, 100%, 85%);
-    border-left: 1px solid hsl(47, 100%, 85%);
-    box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.5);
-
-    &:hover {
-      background-color: hsl(47, 100%, 70%);
-      box-shadow: 0 0 10px 0 hsla(47, 100%, 70%, 0.8);
-    }
-
-    &:disabled.--loading {
-      background-color: hsl(47, 100%, 70%);
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 1rem,
-        hsl(47deg 100% 45%) 1rem,
-        hsl(47deg 100% 45%) 2rem
-      );
-    }
+  &.--attention {
+    --b-c: hsl(47, 100%, 85%);
+    --bg-c: hsl(47, 100%, 50%);
+    --bg-h-c: hsl(47, 100%, 70%);
+    --bxs-c: hsla(47, 100%, 70%, 0.5);
+    --bxs-h-c: hsla(47, 100%, 70%, 0.8);
+    --loading-bg-c: hsl(47, 100%, 70%);
+    --loading-grad-c: hsl(47deg 100% 45%);
   }
 
-  &.btn__dangerous {
-    color: white;
-    background-color: hsl(0, 100%, 57%);
-    border-top: 1px solid hsl(0, 100%, 70%);
-    border-left: 1px solid hsl(0, 100%, 70%);
-    box-shadow: 0 0 10px 0 hsla(0, 100%, 63%, 0.7);
-
-    &:hover {
-      background-color: hsl(0, 100%, 65%);
-      box-shadow: 0 0 10px 0 hsla(0, 100%, 65%, 0.9);
-    }
-
-    &:disabled.--loading {
-      background-color: hsl(0, 100%, 65%);
-      background-image: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 1rem,
-        hsl(0deg 100% 54%) 1rem,
-        hsl(0deg 100% 54%) 2rem
-      );
-    }
+  &.--dangerous {
+    --text-c: white;
+    --b-c: hsl(0, 100%, 70%);
+    --bg-c: hsl(0, 100%, 57%);
+    --bg-h-c: hsl(0, 100%, 65%);
+    --bxs-c: hsla(0, 100%, 63%, 0.7);
+    --bxs-h-c: hsla(0, 100%, 65%, 0.9);
+    --loading-bg-c: hsl(0, 100%, 65%);
+    --loading-grad-c: hsl(0deg 100% 54%);
   }
 }
