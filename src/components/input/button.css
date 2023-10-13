@@ -18,7 +18,6 @@
   --_loading-grad-c: var(--loading-grad-c, hsl(198, 13%, 65%));
   --_loading-text-c: var(--loading-text-c, var(--_text-c));
 
-  padding: 0.3rem 1rem;
   box-shadow: 0 0 5px 0 var(--_bxs-c);
   border-top: 1px solid var(--_b-c);
   border-left: 1px solid var(--_b-c);
@@ -33,7 +32,7 @@
     box-shadow: 0 0 6px 1px var(--_bxs-h-c);
   }
 
-  &.--loading {
+  &--loading {
     background-size: 4000px 100%;
     animation: barber-pole 36s linear infinite;
   }
@@ -55,7 +54,7 @@
       left: 0;
     }
 
-    &.--loading {
+    &.btn--loading {
       border-color: var(--_b-c);
       background-color: var(--_loading-bg-c);
       background-image: repeating-linear-gradient(
@@ -69,7 +68,7 @@
     }
   }
 
-  &.--info {
+  &--info {
     --bg-c: hsl(199, 89%, 48%); /* sky-500 */
     --b-c: hsl(199, 95%, 74%); /* sky-300 */
     --bg-h-c: hsl(199, 89%, 70%);
@@ -79,7 +78,7 @@
     --loading-grad-c: hsl(200, 75%, 57%);
   }
 
-  &.--good {
+  &--good {
     --b-c: hsl(160, 100%, 85%);
     --bg-c: hsl(160, 100%, 47%);
     --bg-h-c: hsl(160, 100%, 70%);
@@ -89,7 +88,7 @@
     --loading-grad-c: hsl(160, 100%, 43%);
   }
 
-  &.--attention {
+  &--attention {
     --b-c: hsl(47, 100%, 85%);
     --bg-c: hsl(47, 100%, 50%);
     --bg-h-c: hsl(47, 100%, 70%);
@@ -99,7 +98,7 @@
     --loading-grad-c: hsl(47deg 100% 45%);
   }
 
-  &.--dangerous {
+  &--dangerous {
     --text-c: white;
     --b-c: hsl(0, 100%, 70%);
     --bg-c: hsl(0, 100%, 57%);

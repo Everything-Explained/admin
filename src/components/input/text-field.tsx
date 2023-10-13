@@ -1,3 +1,4 @@
+import './text-field.css';
 import {
   For,
   Match,
@@ -8,7 +9,6 @@ import {
   createMemo,
   createSignal,
 } from 'solid-js';
-import './input.css';
 import { Transition } from 'solid-transition-group';
 import { genID } from '../../utils/gen-id';
 
@@ -41,7 +41,7 @@ export class InputConditions {
   }
 }
 
-export function Input({
+export function TextField({
   minlength,
   maxlength,
   children,

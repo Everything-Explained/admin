@@ -1,6 +1,6 @@
 import { useNavigate } from '@solidjs/router';
 import './nav-card.css';
-import { Button } from './ui/button';
+import { Button } from './input/button';
 
 type NavCardProps = {
   children: string;

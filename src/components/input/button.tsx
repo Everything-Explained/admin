@@ -1,5 +1,5 @@
 export type BtnSize = 'lg' | 'md' | 'sm';
-import { createMemo, createSignal } from 'solid-js';
+import { createMemo } from 'solid-js';
 import './button.css';
 
 type BtnProps = {
@@ -23,10 +23,10 @@ export const Button = (props: BtnProps) => {
       type="button"
       disabled={isLoading() ? true : props.disabled ?? false}
       onclick={click}
-      class="btn relative select-none rounded-md font-semibold uppercase"
+      class="btn relative select-none rounded-md px-3 py-1 font-semibold uppercase"
       classList={{
-        [`--${colorType}`]: !props.disabled,
-        '--loading': isLoading(),
+        [`btn--${colorType}`]: !props.disabled,
+        'btn--loading': isLoading(),
       }}
     >
       {children}

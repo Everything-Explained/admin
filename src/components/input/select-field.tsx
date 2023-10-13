@@ -1,5 +1,5 @@
 import { For, createMemo, createSignal, onCleanup, onMount } from 'solid-js';
-import './select.css';
+import './select-field.css';
 
 type SelectProps = {
   items: string[];
@@ -16,7 +16,7 @@ type SelectProps = {
   onChange: (val: number) => void;
 };
 
-export function Select({ items, children, width, onChange, maxHeight }: SelectProps) {
+export function SelectField({ items, children, width, onChange, maxHeight }: SelectProps) {
   let elSelect: HTMLDivElement | undefined;
   const [open, setOpenState] = createSignal(false);
   const [title, setTitle] = createSignal(children);

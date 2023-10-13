@@ -1,7 +1,7 @@
 import './login.css';
 import { createMemo, createSignal } from 'solid-js';
-import { Button } from '../../components/ui/button';
-import { Input, InputConditions } from '../../components/ui/input';
+import { Button } from '../../components/input/button';
+import { TextField, InputConditions } from '../../components/input/text-field';
 import { useGlobalProgress } from '../../components/ui/global-progress';
 
 type InputState<T> = [isValid: boolean, val: T];
@@ -42,7 +42,7 @@ function LoginForm() {
 
   return (
     <>
-      <Input
+      <TextField
         type="text"
         minlength={3}
         maxlength={20}
@@ -50,8 +50,8 @@ function LoginForm() {
         onChange={(isValid, val) => setUsernameState([isValid, val])}
       >
         First Name or Alias
-      </Input>
-      <Input
+      </TextField>
+      <TextField
         type="password"
         conditions={[
           InputConditions.needNumber,
@@ -62,7 +62,7 @@ function LoginForm() {
         minlength={6}
       >
         Password
-      </Input>
+      </TextField>
       <div class="text-right">
         <span class="">
           <Button color="attention" disabled={!isFormValid()} click={submit}>
