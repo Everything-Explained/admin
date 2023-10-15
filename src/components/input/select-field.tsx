@@ -11,7 +11,8 @@ type SelectProps = {
   onChange: (val: number) => void;
 };
 
-export function SelectField({ items, children, width, onChange, maxHeight }: SelectProps) {
+export function SelectField(props: SelectProps) {
+  const { items, children, width, onChange, maxHeight } = props;
   let elSelect: HTMLDivElement | undefined;
   const [open, setOpenState] = createSignal(false);
   const [title, setTitle] = createSignal(children);
