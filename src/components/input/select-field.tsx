@@ -3,16 +3,11 @@ import './select-field.css';
 
 type SelectProps = {
   items: string[];
-
-  /* CSS height value */
+  /** CSS height value */
   maxHeight: string;
-
   /** Default Item */
   children: string;
-
-  /** CSS width value */
   width?: string;
-
   onChange: (val: number) => void;
 };
 
