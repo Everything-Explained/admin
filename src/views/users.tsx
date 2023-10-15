@@ -1,18 +1,14 @@
 import './users.css';
 import { For, Show, createMemo, createResource, createSignal } from 'solid-js';
-import { MockDatabaseUser } from '../__mocks__/mock_db-user';
 import { User, UserAccessLevel, useUserDatabase } from '../database/db-user';
 import { TextField, InputConditions } from '../components/input/text-field';
 import { SelectField } from '../components/input/select-field';
 import { Button } from '../components/input/button';
-import {
-  useAccessLevelColors,
-  useAccessLevelStr,
-  useAccessLevels,
-} from '../utils/access-levels';
+import { useAccessLevel, useAccessLevelColors } from '../utils/access-levels';
 import { SwitchField } from '../components/input/switch-field';
 
 type InputState<T> = [isValid: boolean, value: T];
+const _accessLevel = useAccessLevel();
 
 export function Users() {
   const userDB = useUserDatabase();
@@ -65,7 +61,7 @@ function AccessLevel({ level }: { level: UserAccessLevel }) {
   return (
     <div class="w-44 self-center pr-3 text-center text-base font-semibold uppercase tracking-wide">
       <span class={`${'flex rounded-md border-2 border-black py-[2px]'} ${accessLevelColors}`}>
-        <span class="flex-1">{useAccessLevelStr(level)}</span>
+        <span class="flex-1">{_accessLevel.toString(level)}</span>
       </span>
     </div>
   );
@@ -136,9 +132,14 @@ function UsersEditPane(props: EditPaneProps) {
           <div>
             <SelectField
               width="10.5rem"
-              maxHeight="14.2rem"
-              onChange={(val) => setAccessLevelState([val > -1, val])}
-              items={useAccessLevels()}
+              onChange={(selectedIndex) =>
+                setAccessLevelState([
+                  _accessLevel.fromIndexToValue(selectedIndex) != user.accessLevel,
+                  selectedIndex,
+                ])
+              }
+              items={_accessLevel.levels}
+              selectedIndex={_accessLevel.toIndex(user.accessLevel)}
             >
               Access Level
             </SelectField>
