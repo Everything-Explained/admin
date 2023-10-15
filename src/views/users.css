@@ -12,16 +12,6 @@
   user-select: none;
 }
 
-.users__access-level {
-  width: 10rem;
-  padding-right: 0.75rem;
-  align-self: center;
-  text-align: center;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-variant: small-caps;
-}
-
 .users__edit-wrapper {
   overflow: hidden;
   height: 0;

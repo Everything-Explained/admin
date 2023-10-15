@@ -63,7 +63,7 @@ function AccessLevel({ level }: { level: UserAccessLevel }) {
   const accessLevelColors = useAccessLevelColors(`${level}`).join(' ');
 
   return (
-    <div class="users__access-level">
+    <div class="w-44 self-center pr-3 text-center text-base font-semibold uppercase tracking-wide">
       <span class={`${'flex rounded-md border-2 border-black'} ${accessLevelColors}`}>
         <span class="flex-1">{useAccessLevelStr(level)}</span>
       </span>
